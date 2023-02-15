@@ -1,0 +1,49 @@
+﻿<Page x:Class="WorldSkills.Pages.MainPages.PageMainUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorldSkills.Pages.MainPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageMainUser">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="30">
+            Здравствуйте, <Run Name="RnUserName"/>
+        </TextBlock>
+        
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="300">
+            <Button Click="BtnClickCreateDevice" 
+                    Content="Добавить устройство"
+                    Margin="0,0,0,2"
+                    />
+            <Button Click="BtnClickRefreshDeviceInfo" 
+                    Content="Изменить устройство"
+                    Margin="0,0,0,2"
+
+                    />
+            <Button Click="BtnClickSetPortsDevice" 
+                    Content="Назначить порты устройства"
+                    Margin="0,0,0,2"
+                    />
+            <Button Click="BtnClickViewDeviceInfo" 
+                    Content="Вывести информацию об устройстве"
+                    Margin="0,0,0,2"
+                    />
+
+        </StackPanel>
+    </Grid>
+</Page>

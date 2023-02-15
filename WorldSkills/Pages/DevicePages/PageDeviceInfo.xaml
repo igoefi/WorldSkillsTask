@@ -1,0 +1,61 @@
+﻿<Page x:Class="WorldSkills.Pages.DevicePages.PageDeviceInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorldSkills.Pages.DevicePages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageDeviceInfo">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <TextBlock
+                Margin="0,0,0,10">
+                Название: <Run Name="RnDeviceName"/>
+            </TextBlock>
+            <TextBlock
+                Margin="0,0,0,10">
+                IP: <Run Name="RnDeviceIP"/>
+            </TextBlock>
+            <TextBlock
+                Margin="0,0,0,10">
+                MAC: <Run Name="RnDeviceMAC"/>
+            </TextBlock>
+        </StackPanel>
+        <Button Click="BtnClickGoToMain"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Height="30"
+                Width="90"
+                Content="Главное меню" Grid.Column="1"/>
+
+        <StackPanel
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+            Grid.Column="1">
+            <TextBlock
+            FontSize="30"
+                HorizontalAlignment="Center">
+            Выбор порта:
+            </TextBlock>
+            <ComboBox Name="CmbBoxPorts"
+                  SelectionChanged="CmbBoxSelectedPorts"
+                  Width="200"
+                  Margin="0,30,0,0"/>
+            <TextBlock
+                Margin="0,100,0,0"
+                FontSize="30"
+                HorizontalAlignment="Center">
+                Порт номер <Run Name="RnPortNum"/>Описание: <Run Name="RnPortDescription"/>
+            </TextBlock>
+        </StackPanel>
+        
+    </Grid>
+</Page>

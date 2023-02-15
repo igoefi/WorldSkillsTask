@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WorldSkillsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WorldSkillsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Devices" EntityType="WorldSkillsModel.Devices" />
+    <EntitySet Name="Roles" EntityType="WorldSkillsModel.Roles" />
+    <EntitySet Name="Users" EntityType="WorldSkillsModel.Users" />
+    <AssociationSet Name="FK_Users_Roles" Association="WorldSkillsModel.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Devices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PortsJson" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MAC" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="WorldSkillsModel.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GenderIsMale" Type="Boolean" Nullable="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Roles" Relationship="WorldSkillsModel.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK_Users_Roles">
+    <End Type="WorldSkillsModel.Roles" Role="Roles" Multiplicity="1" />
+    <End Type="WorldSkillsModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
